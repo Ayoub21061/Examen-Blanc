@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/css/style.css">
+<center><img src="/image/Henni.jpeg" alt=""></center>
+<div id="dégradé">
+    <h1>TV LIST</h1>
+<h2>Télévisions désirées</h2>
+<ul>
+  <% for(tv of wishlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>$ <%= tv.Taille %> cm<a href="/delete/<%= tv.idTV %>">Retirer</a> <a href=" /buy/<%= tv.idTV %>">Acheter</a></li>
+  <% } %>
+</ul>
+
+<h2>Télévisions Achetées</h2>
+<ul>
+    <% for(tv of boughtlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>$ <%= tv.Taille %> cm<a href="/broken/<%= tv.idTV %>">Casser</a><br/></li>
+    <% } %>
+</ul>
+
+<h2>Télévisions Cassées</h2>
+<ul>
+    <% for(tv of brokenlist) { %>
+    <li><%= tv.Marque %> <%= tv.Prix %>$ <%= tv.Taille %> cm <a href="/delete/<%= tv.idTV %>">Retirer</a><br/>
+        Cause: <%= tv.Cause %>
+    </li>
+    <% } %>
+  </ul>
+</div>
+
+
+
+
+<form action="/add" method="POST">
+    Marque :
+    <input type="text" name="Marque" value="" /><br />
+    Prix :
+    <input type="text" name="Prix" value="" /><br />
+    <input type="hidden" name="idTV" value="" />
+    Taille (cm):
+    <input type="number" name="Taille" min="O" max="200" value=""><br />
+    <input type="submit" name="save" value="Sauver" /><br />
+</form>
+
